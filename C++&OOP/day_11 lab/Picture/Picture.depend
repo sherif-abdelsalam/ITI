@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1764861121 source:e:\iti\programming fund\labs\day_11 lab\picture\main.cpp
+	<iostream>
+	<graphics.h>
+

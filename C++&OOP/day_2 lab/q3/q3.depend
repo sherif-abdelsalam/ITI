@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1763542002 source:e:\iti\programming fund\day_2 lab\q3\main.cpp
+	<iostream>
+	"MyLibrary.h"
+
