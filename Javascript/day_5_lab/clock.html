@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="showTime()">Start Clock</button>
+    <div id="show-time"></div>
+
+    <script>
+        let inerval;
+        const showTime = () => {
+            alert("Clock Started");
+            const now = new Date();
+            let time = now.toLocaleTimeString();
+                document.querySelector('#show-time').innerText = time;
+            interval = setInterval(() => {
+                time = new Date().toLocaleTimeString();
+                document.querySelector('#show-time').innerText = time;
+            }, 1000);   
+        }
+        document.addEventListener('keydown', (e) => {
+            console.log(e);
+            if (e.shiftKey && e.key === 'w' || e.shiftKey && e.key === 'W') {
+                alert('Clock Stopped');
+                clearInterval(interval);
+            }
+        });
+    </script>
+
+</body>
+</html>

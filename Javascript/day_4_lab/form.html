@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span{
+            color :red;
+            display: none;
+        }
+        .invalid{
+            border:1px solid red;
+        }
+
+        table {
+            border: 2px solid black;
+            width: 80%;
+            margin: auto;
+            display: none;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label>Name:</label>
+        <input type="text" id="name" name="name" onchange="inputData('name')">
+        <span></span>
+        <br><br>
+        <label>Age:</label>
+        <input type="text"  id="age" name="age" onchange="inputData('age')">
+        <span></span>
+        <br><br>
+        <label>Email:</label>
+        <input type="email" id="email" name="email" onchange="inputData('email')">
+        <span></span>
+        <br><br>
+
+        <button type="submit">Add</button>
+        <button id="reset" type="reset">Reset</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    <script src="form.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <script>
+            // // swapping values using destructuring
+            // let x = 20;
+            // let y = 10;
+            // [x, y] = [y, x];    
+            // console.log(x); 
+            // console.log(y);
+
+            // min max
+            const getMinMax = (...numbers) => {
+                let min = Math.min(...numbers);
+                let max = Math.max(...numbers);
+                return [min, max];
+            };
+            const numbers = [3, 5, 1, 8, -2, 7];
+            const [min, max] = getMinMax(...numbers);
+            console.log(min);
+            console.log(max);       
+
+        </script>
+</body>
+</html>

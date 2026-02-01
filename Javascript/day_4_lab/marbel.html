@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marbles Slider</title>
+</head>
+<body>
+    <div>
+        <img src="/marbels/marble2.jpg" />
+        <img src="/marbels/marble1.jpg" />
+        <img src="/marbels/marble1.jpg" />
+        <img src="/marbels/marble1.jpg" />
+        <img src="/marbels/marble1.jpg" />
+    </div>
+
+    <script>
+        var currentIndex = 0;
+        var totalMarbels = 5;
+        var interval;
+
+        var imagesParent = document.querySelector('div');
+        var images = document.querySelectorAll('img');
+
+        function startAnimation() {
+            interval = setInterval(function() {
+                images[currentIndex].src = '/marbels/marble1.jpg';
+                images[(currentIndex + 1) % totalMarbels].src = '/marbels/marble2.jpg';
+                currentIndex++;
+                if (currentIndex >= totalMarbels) currentIndex = 0;
+            }, 500);
+        }
+
+        function stopAnimation() {
+            clearInterval(interval);
+        }
+
+        startAnimation();
+        imagesParent.addEventListener('mouseover', stopAnimation);
+        imagesParent.addEventListener('mouseout', startAnimation);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Showing Pictures</h1>
+    <hr>
+    <div>
+        <button class="prev">Prev</button>
+        <button class="slideshow">SlideShow</button>
+        <button class="stop">Stop</button>
+        <button class="next">Next</button>
+    </div>
+
+    <img src="/SlideShow/1.jpg" />
+    
+    <script>
+        var count = 1;
+        var total = 5;
+        var interval;
+
+        var next = document.querySelector('.next');
+        var prev = document.querySelector('.prev');
+        var slideshow = document.querySelector('.slideshow');
+        var stop = document.querySelector('.stop');
+
+        function showImage() {
+            document.querySelector('img').src = '/SlideShow/' + count + '.jpg';
+        }
+
+        next.addEventListener('click', function() {
+            count++;
+            if (count > total) { count = 1; }
+            showImage();
+        });
+
+        prev.addEventListener('click', function() {
+            count--;
+            if (count < 1) { count = total; }
+            showImage();
+        });
+
+        slideshow.addEventListener('click', function() {
+            clearInterval(interval);
+            interval = setInterval(function() {
+                count++;
+                if (count > total) { count = 1; }
+                showImage();
+            }, 2000);
+        });
+
+        stop.addEventListener('click', function() {
+            clearInterval(interval);
+        });
+    </script>
+
+</body>
+</html> 

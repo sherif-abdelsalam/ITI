@@ -1,0 +1,23 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const email = urlParams.get('email');
+            const address = urlParams.get('address');
+            const mobile = urlParams.get('mobile');
+
+            document.write(`<p>Name: ${name}</p>`);
+            document.write(`<p>Email: ${email}</p>`);
+            document.write(`<p>Address: ${address}</p>`);
+            document.write(`<p>Mobile: ${mobile}</p>`);
+        </script>
+    </body>
+
+    </html>

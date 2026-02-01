@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input type="text" />
+
+    <script>
+
+        var inputField = document.querySelector('input');
+
+        inputField.addEventListener('keydown', function(event) {
+            var allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight'];
+
+            if (!(/\d/.test(event.key) || allowedKeys.includes(event.key))) {
+                event.preventDefault();
+            }
+        });
+
+
+    </script>
+</body>
+</html>

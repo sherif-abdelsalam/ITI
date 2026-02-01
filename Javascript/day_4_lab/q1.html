@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: aqua;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div></div>
+
+    <script>
+        var devEl = document.querySelector('div');
+        devEl.addEventListener('click', function(){
+
+            var newEl = devEl.cloneNode(true);
+            newEl.style.backgroundColor = GenerateRandomColor();
+            document.body.appendChild(newEl);
+
+
+        });
+
+        function GenerateRandomColor(){
+            return  "rgb(" +
+                Math.floor(Math.random() * 256) + "," +
+                Math.floor(Math.random() * 256) + "," +
+                Math.floor(Math.random() * 256) +
+             ")";
+        }
+    
+    </script>
+</body>
+</html>
