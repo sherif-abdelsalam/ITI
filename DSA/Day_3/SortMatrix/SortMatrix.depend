@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1765287577 source:e:\iti\dsa\day_3\sortmatrix\main.cpp
+	<iostream>
+	<algorithm>
+

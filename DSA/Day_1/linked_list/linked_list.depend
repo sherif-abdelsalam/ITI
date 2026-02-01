@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1765285248 source:e:\iti\dsa\day_1\linked_list\main.cpp
+	<iostream>
+	"LinkedList.h"
+	"Stack.h"
+	"Queue.h"
+	"QueueCir.h"
+	"StackArr.h"
+
+1765285321 e:\iti\dsa\day_1\linked_list\include\linkedlist.h
+	"Node.h"
+	<cstddef>
+	<iostream>
+
+1765016335 e:\iti\dsa\day_1\linked_list\include\node.h
+	<cstddef>
+
+1765016399 source:e:\iti\dsa\day_1\linked_list\src\linkedlist.cpp
+
+1765016397 source:e:\iti\dsa\day_1\linked_list\src\node.cpp
+
+1765132908 source:e:\iti\dsa\day_1\linked_list\src\stack.cpp
+
+1765134739 source:e:\iti\dsa\day_1\linked_list\src\queue.cpp
+
+1765279231 e:\iti\dsa\day_1\linked_list\include\stack.h
+	"LinkedList.h"
+	<iostream>
+
+1765280025 e:\iti\dsa\day_1\linked_list\include\queue.h
+	"LinkedList.h"
+	<iostream>
+
+1765182083 source:e:\iti\dsa\day_1\linked_list\src\queuecir.cpp
+
+1765185053 e:\iti\dsa\day_1\linked_list\include\queuecir.h
+	<iostream>
+
+1765279584 e:\iti\dsa\day_1\linked_list\include\stackarr.h
+
+1765279589 source:e:\iti\dsa\day_1\linked_list\src\stackarr.cpp
+
