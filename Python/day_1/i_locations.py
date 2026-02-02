@@ -1,5 +1,9 @@
+def find_char_indexes(text, target):
+    indexes = []
 
-loc = "iti"
-for index,c in enumerate(loc):
-    if c == 'i':
-        print(index)
+    for index, c in enumerate(text):
+        if c == target:
+            indexes.append(index)
+
+    return indexes
+
