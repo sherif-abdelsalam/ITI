@@ -1,0 +1,37 @@
+[
+    {
+        "first_name": "sherif",
+        "last_name": "mohammed",
+        "email": "adsf@ga.com",
+        "password": "asdf",
+        "phone_number": "01233333333"
+    },
+    {
+        "first_name": "sherif",
+        "last_name": "mohammed",
+        "email": "sherif@gmail.com",
+        "password": "1234",
+        "phone_number": "01033333333"
+    },
+    {
+        "first_name": "sherif",
+        "last_name": "hodhod",
+        "email": "sherif2@gmail.com",
+        "password": "1234",
+        "phone_number": "01022222222"
+    },
+    {
+        "first_name": "adsaf",
+        "last_name": "asdf",
+        "email": "123@sd.com",
+        "password": "123",
+        "phone_number": "01022222222"
+    },
+    {
+        "first_name": "adfs",
+        "last_name": "asdf",
+        "email": "dsfd@sddf.com",
+        "password": "123",
+        "phone_number": "01033333333"
+    }
+]

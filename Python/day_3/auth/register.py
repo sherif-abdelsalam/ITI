@@ -1,7 +1,7 @@
 from validations.auth_validations import compare_passwords, is_email_already_existed, is_valid_email, is_valid_name, is_valid_phone_number
 from system_methods import clear_screen, pause_for_1_seconds
-import json
 from user_ops_menu import main_menu
+from data_ops import load, save
 
 def get_user_data():
 
@@ -47,21 +47,9 @@ def get_user_data():
     return user_data    
 
 
-
-def load_users():
-    try:
-        with open("file_storage/users.json", "r") as file:
-            return json.load(file)
-    except FileNotFoundError:
-        return []
-
-def save_users(users):
-    with open("file_storage/users.json", "w") as file:
-        json.dump(users, file, indent=4)
-
 def register():
 
-    users = load_users()
+    users = load("users")
 
     user_data = get_user_data()
 
@@ -71,7 +59,7 @@ def register():
 
     users.append(user_data)
 
-    save_users(users)
+    save("users", users)
 
     print("\nUser registered successfully") 
 

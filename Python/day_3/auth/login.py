@@ -1,7 +1,7 @@
 
-from day_3.system_methods import pause_for_1_seconds
-from day_3.user_ops_menu import main_menu
-from day_3.validations.auth_validations import check_login_credentials, is_valid_email, is_valid_name
+from system_methods import pause_for_1_seconds
+from user_ops_menu import main_menu
+from validations.auth_validations import check_login_credentials, is_valid_email, is_valid_name
 
 
 def get_login_data():
@@ -12,7 +12,7 @@ def get_login_data():
 
     password = input("Enter your password: ")
     login_data = {
-        "email": email,
+        "email": email,     
         "password": password
     }
     return login_data
