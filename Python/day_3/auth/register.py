@@ -55,6 +55,7 @@ def register():
 
     while is_email_already_existed(user_data["email"]):
         print("Email already exists.")
+        pause_for_1_seconds()
         user_data = get_user_data()
 
     users.append(user_data)
