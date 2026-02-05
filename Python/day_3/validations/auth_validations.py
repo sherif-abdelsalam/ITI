@@ -3,7 +3,7 @@ import json
 import re
 
 def is_valid_name(name):
-    return name.isalpha() and len(name) > 3 
+    return name.isalpha() 
 
 def is_valid_email(email):
     email_validator = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
