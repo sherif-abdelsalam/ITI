@@ -14,7 +14,6 @@ def delete_my_project(email: str):
     print("*" * 40)
 
 
-
     project_idx = select_user_project(projects, email)
     project_title = projects[project_idx]['title']
 

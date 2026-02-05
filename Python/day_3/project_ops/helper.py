@@ -13,9 +13,6 @@ def get_my_projects(email: str):
 
 
 def select_user_project(projects, email):
-    if not projects:
-        return None
-
     while True:
         project_id = input("Enter the project ID: ")
         if not project_id.isdigit():
