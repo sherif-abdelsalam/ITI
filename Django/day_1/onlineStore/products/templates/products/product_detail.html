@@ -1,0 +1,220 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+/* Breadcrumb */
+.breadcrumb {
+    margin-bottom: 25px;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+.breadcrumb a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Layout */
+.product-detail-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+/* Product Image */
+.product-image {
+    width: 100%;
+    max-width: 420px;
+    height: 420px;
+    background: #f5f6fa;
+    border-radius: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.product-image:hover img {
+    transform: scale(1.06);
+}
+
+/* Product Title */
+.product-title {
+    font-size: 34px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+/* Price */
+.product-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: #e74c3c;
+    margin: 12px 0 18px;
+}
+
+/* Stock Badge */
+.stock-badge {
+    display: inline-block;
+    padding: 7px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.stock-available {
+    background: #dff6ea;
+    color: #27ae60;
+}
+
+.stock-low {
+    background: #fff3cd;
+    color: #f39c12;
+}
+
+.stock-out {
+    background: #fde2e2;
+    color: #e74c3c;
+}
+
+/* Back link */
+.back-link {
+    display: inline-block;
+    margin: 22px 0;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+/* Description Box */
+.product-description {
+    margin-top: 30px;
+    padding: 26px;
+    background: #fafafa;
+    border-radius: 16px;
+    border: 1px solid #eee;
+}
+
+.description-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 12px;
+}
+
+.description-text {
+    font-size: 15px;
+    color: #7f8c8d;
+    line-height: 1.8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .product-detail-content {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .product-image {
+        height: 300px;
+    }
+
+    .product-title {
+        font-size: 26px;
+    }
+
+    .product-price {
+        font-size: 26px;
+    }
+}
+</style>
+
+<div class="breadcrumb">
+    <a href="/">Home</a> → 
+    <a href="/products/">Products</a> → 
+    <strong>{{ product.name }}</strong>
+</div>
+
+{% if product %}
+<div class="container">
+
+    <div class="product-detail-content">
+
+        <!-- Image -->
+        <div>
+            <div class="product-image">
+                {% if product.image %}
+                    <img src="{% static product.image %}" alt="{{ product.name }}">
+                {% else %}
+                    📦
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div>
+
+            <h2 class="product-title">{{ product.name }}</h2>
+
+            <div class="product-price">
+                ${{ product.price|floatformat:2 }}
+            </div>
+
+            <div>
+                {% if product.stock > 10 %}
+                    <span class="stock-badge stock-available">In Stock</span>
+                {% elif product.stock > 0 %}
+                    <span class="stock-badge stock-low">Low Stock</span>
+                {% else %}
+                    <span class="stock-badge stock-out">Out of Stock</span>
+                {% endif %}
+            </div>
+
+
+            <a href="/products/" class="back-link">← Back to Products</a>
+
+            <div class="product-description">
+                <h3 class="description-title">Description</h3>
+                <p class="description-text">
+                    {% if product.description %}
+                        {{ product.description }}
+                    {% else %}
+                        Premium quality {{ product.name }} designed for performance and reliability.
+                    {% endif %}
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="empty-state">
+    <h2>Product Not Found</h2>
+    <p>This product doesn’t exist.</p>
+    <a href="/products/" class="btn btn-primary">Back to Products</a>
+</div>
+{% endif %}
+
+{% endblock %}

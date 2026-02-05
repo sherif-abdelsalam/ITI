@@ -1,0 +1,50 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h2 class="section-title">Our Products</h2>
+
+{% if products %}
+<div class="products-grid">
+
+    {% for product in products %}
+    <div class="product-card">
+
+        <!-- Product Image -->
+        <div class="product-image">
+            {% if product.image %}
+                <img src="{% static product.image %}" alt="{{ product.name }}">
+            {% else %}
+                <span>No Image Available</span>
+            {% endif %}
+        </div>
+
+        <!-- Product Info -->
+        <div class="product-info">
+
+            <!-- Product Title -->
+            <h3 class="product-name">{{ product.name }}</h3>
+
+            <!-- View Details Button -->
+            <div class="product-actions">
+                <a href="/products/{{ product.id }}/" class="btn btn-secondary">
+                    View Details
+                </a>
+            </div>
+
+        </div>
+    </div>
+    {% endfor %}
+
+</div>
+
+{% else %}
+<div class="empty-state">
+    <div class="empty-state-icon">📦</div>
+    <h3>No Products Available</h3>
+    <p>Sorry, there are no products to display at the moment.</p>
+</div>
+{% endif %}
+
+{% endblock %}
