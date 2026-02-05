@@ -33,5 +33,26 @@
         "email": "dsfd@sddf.com",
         "password": "123",
         "phone_number": "01033333333"
+    },
+    {
+        "first_name": "ahmed",
+        "last_name": "mohammed",
+        "email": "ahmed@gmail.com",
+        "password": "1234",
+        "phone_number": "01022222222"
+    },
+    {
+        "first_name": "ahmed",
+        "last_name": "dddd",
+        "email": "ahmedw@gmail.com",
+        "password": "123",
+        "phone_number": "01011111111"
+    },
+    {
+        "first_name": "ali",
+        "last_name": "mohammed",
+        "email": "ali@gmail.com",
+        "password": "1234",
+        "phone_number": "01033123424"
     }
 ]
