@@ -6,146 +6,228 @@
 <style>
 /* Breadcrumb */
 .breadcrumb {
-    margin-bottom: 25px;
-    font-size: 14px;
+    margin-bottom: 30px;
+    font-size: 15px;
     color: #7f8c8d;
+    padding: 15px 0;
+    border-bottom: 2px solid rgba(102, 126, 234, 0.1);
 }
 
 .breadcrumb a {
-    color: #3498db;
+    color: #667eea;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    transition: color 0.3s ease;
 }
 
 .breadcrumb a:hover {
-    text-decoration: underline;
+    color: #764ba2;
 }
 
 /* Layout */
 .product-detail-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
-    align-items: center;
+    gap: 60px;
+    align-items: flex-start;
 }
 
 /* Product Image */
 .product-image {
     width: 100%;
-    max-width: 420px;
-    height: 420px;
-    background: #f5f6fa;
+    max-width: 450px;
+    height: 450px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%);
     border-radius: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    position: relative;
 }
 
 .product-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.35s ease;
+    transition: transform 0.4s ease;
 }
 
 .product-image:hover img {
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
 /* Product Title */
 .product-title {
-    font-size: 34px;
+    font-size: 36px;
     font-weight: 700;
     color: #2c3e50;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    line-height: 1.3;
 }
 
 /* Price */
 .product-price {
-    font-size: 32px;
+    font-size: 36px;
     font-weight: 700;
-    color: #e74c3c;
-    margin: 12px 0 18px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 20px 0 25px;
+    display: inline-block;
 }
 
 /* Stock Badge */
 .stock-badge {
     display: inline-block;
-    padding: 7px 14px;
-    border-radius: 20px;
-    font-size: 13px;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 14px;
     font-weight: 600;
+    margin-bottom: 30px;
 }
 
 .stock-available {
-    background: #dff6ea;
+    background: #d5f4e6;
     color: #27ae60;
 }
 
 .stock-low {
-    background: #fff3cd;
+    background: #ffeaa7;
     color: #f39c12;
 }
 
 .stock-out {
-    background: #fde2e2;
+    background: #fadbd8;
     color: #e74c3c;
 }
 
 /* Back link */
 .back-link {
     display: inline-block;
-    margin: 22px 0;
-    color: #3498db;
+    margin: 25px 0 35px;
+    color: #667eea;
     text-decoration: none;
     font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
 }
 
 .back-link:hover {
-    text-decoration: underline;
+    color: #764ba2;
+    margin-left: 5px;
 }
 
 /* Description Box */
 .product-description {
     margin-top: 30px;
-    padding: 26px;
-    background: #fafafa;
+    padding: 30px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
     border-radius: 16px;
-    border: 1px solid #eee;
+    border: 2px solid rgba(102, 126, 234, 0.1);
+    transition: all 0.3s ease;
+}
+
+.product-description:hover {
+    border-color: #667eea;
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
 }
 
 .description-title {
-    font-size: 19px;
+    font-size: 20px;
     font-weight: 600;
     color: #2c3e50;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .description-text {
-    font-size: 15px;
-    color: #7f8c8d;
+    font-size: 16px;
+    color: #555;
     line-height: 1.8;
+}
+
+/* Product Details Section */
+.product-details-section {
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 2px solid rgba(102, 126, 234, 0.1);
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.detail-item {
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+}
+
+.detail-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+}
+
+.detail-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .product-detail-content {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 40px;
     }
 
     .product-image {
-        height: 300px;
+        height: 350px;
+        max-width: 100%;
     }
 
     .product-title {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .product-price {
-        font-size: 26px;
+        font-size: 28px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-title {
+        font-size: 24px;
+    }
+
+    .product-price {
+        font-size: 22px;
+    }
+
+    .product-image {
+        height: 280px;
+    }
+
+    .breadcrumb {
+        font-size: 13px;
     }
 }
 </style>
@@ -167,7 +249,7 @@
                 {% if product.image %}
                     <img src="{% static product.image %}" alt="{{ product.name }}">
                 {% else %}
-                    📦
+                    <span style="font-size: 64px;">📦</span>
                 {% endif %}
             </div>
         </div>
@@ -183,11 +265,11 @@
 
             <div>
                 {% if product.stock > 10 %}
-                    <span class="stock-badge stock-available">In Stock</span>
+                    <span class="stock-badge stock-available">✓ In Stock ({{ product.stock }} Available)</span>
                 {% elif product.stock > 0 %}
-                    <span class="stock-badge stock-low">Low Stock</span>
+                    <span class="stock-badge stock-low">⚠ Low Stock ({{ product.stock }} Left)</span>
                 {% else %}
-                    <span class="stock-badge stock-out">Out of Stock</span>
+                    <span class="stock-badge stock-out">✗ Out of Stock</span>
                 {% endif %}
             </div>
 
@@ -195,14 +277,43 @@
             <a href="/products/" class="back-link">← Back to Products</a>
 
             <div class="product-description">
-                <h3 class="description-title">Description</h3>
+                <h3 class="description-title">📝 Description</h3>
                 <p class="description-text">
                     {% if product.description %}
                         {{ product.description }}
                     {% else %}
-                        Premium quality {{ product.name }} designed for performance and reliability.
+                        Premium quality {{ product.name }} designed for performance and reliability. Crafted with attention to detail and built to last.
                     {% endif %}
                 </p>
+            </div>
+
+            <!-- Product Details Section -->
+            <div class="product-details-section">
+                <h3 style="font-size: 20px; font-weight: 600; color: #2c3e50; margin-bottom: 20px;">📊 Product Details</h3>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <div class="detail-label">Product ID</div>
+                        <div class="detail-value">#{{ product.id }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Price</div>
+                        <div class="detail-value">${{ product.price|floatformat:2 }}</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Stock Available</div>
+                        <div class="detail-value">{{ product.stock }} Units</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Status</div>
+                        <div class="detail-value">
+                            {% if product.stock > 0 %}
+                                <span style="color: #27ae60;">● Available</span>
+                            {% else %}
+                                <span style="color: #e74c3c;">● Out of Stock</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -212,7 +323,7 @@
 {% else %}
 <div class="empty-state">
     <h2>Product Not Found</h2>
-    <p>This product doesn’t exist.</p>
+    <p>This product doesn't exist.</p>
     <a href="/products/" class="btn btn-primary">Back to Products</a>
 </div>
 {% endif %}

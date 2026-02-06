@@ -16,7 +16,7 @@
             {% if product.image %}
                 <img src="{% static product.image %}" alt="{{ product.name }}">
             {% else %}
-                <span>No Image Available</span>
+                <span>📦 No Image Available</span>
             {% endif %}
         </div>
 
@@ -26,9 +26,23 @@
             <!-- Product Title -->
             <h3 class="product-name">{{ product.name }}</h3>
 
+            <!-- Product Price -->
+            <div class="product-price">${{ product.price|floatformat:2 }}</div>
+
+            <!-- Stock Badge -->
+            <div>
+                {% if product.stock > 10 %}
+                    <span class="stock-badge stock-available">✓ In Stock</span>
+                {% elif product.stock > 0 %}
+                    <span class="stock-badge stock-low">⚠ Low Stock</span>
+                {% else %}
+                    <span class="stock-badge stock-out">✗ Out of Stock</span>
+                {% endif %}
+            </div>
+
             <!-- View Details Button -->
             <div class="product-actions">
-                <a href="/products/{{ product.id }}/" class="btn btn-secondary">
+                <a href="/products/{{ product.id }}/" class="btn btn-primary">
                     View Details
                 </a>
             </div>
