@@ -339,8 +339,9 @@
         <div class="header-content">
             <h1>🛍️ Online Store</h1>
             <nav class="header-nav">
-                <a href="/">Home</a>
-                <a href="/products/">Products</a>
+                <a href="{% url 'products.index' %}">Products</a>
+                <a href="{% url 'aboutus' %}">About Us</a>
+                <a href="{% url 'contactus' %}">Contact</a>
             </nav>
         </div>
     </header>

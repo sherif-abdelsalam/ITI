@@ -249,7 +249,7 @@
                 {% if product.image %}
                     <img src="{% static 'products/images/'|add:product.image %}" alt="{{ product.name }}">
                 {% else %}
-                    <span style="font-size: 64px;">📦</span>
+                    <span style="font-size: 148px;">📦</span>
                 {% endif %}
             </div>
         </div>
@@ -273,7 +273,7 @@
                 {% endif %}
             </div>
 
-            <a href="{% url 'products.product_list' %}" class="back-link"> ← Back to Products</a>
+            <a href="{% url 'products.index' %}" class="back-link"> ← Back to Products</a>
 
             <div class="product-description">
                 <h3 class="description-title">📝 Description</h3>

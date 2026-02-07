@@ -5,6 +5,10 @@
 
 <h2 class="section-title">Our Products</h2>
 
+<div style="max-width:1200px;margin:12px 0 24px;display:flex;justify-content:flex-end;">
+    <a href="{% url 'products.create' %}" class="btn btn-primary" style="padding:10px 14px;border-radius:10px;text-decoration:none;">+ Add Product</a>
+</div>
+
 {% if products %}
 <div class="products-grid">
 
@@ -42,8 +46,14 @@
 
             <!-- View Details Button -->
             <div class="product-actions">
-                <a href="{% url 'products.product_detail' product.id %}" class="btn btn-primary">
+                <a href="{{ product.show_url }}" class="btn btn-primary">
                     View Details
+                </a>
+                <a href="{{ product.edit_url }}" class="btn btn-primary">
+                    Edit
+                </a>
+                <a href="{{ product.delete_url }}" class="btn btn-primary">
+                    Delete Product
                 </a>
             </div>
 
