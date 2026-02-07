@@ -14,7 +14,7 @@
 	</div>
 	{% endif %}
 
-	<form action="{% url 'products.create' %}" method="post">
+    <form action="{% if product %}{% url 'products.edit' product.id %}{% else %}{% url 'products.create' %}{% endif %}" method="post">
 		{% csrf_token %}
 
 		{% if product %}

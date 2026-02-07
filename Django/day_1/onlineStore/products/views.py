@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404
 
 from products.models import Product
 # Create your views here.
@@ -63,13 +64,7 @@ def product_create(request):
         price = request.POST['price']
         stock = request.POST['stock']
         image = request.POST['image']
-        product = Product(
-            name=name,
-            description=description,
-            price=price,
-            stock=stock,
-            image=image
-        )
+        product = Product(name=name,description=description,price=price,stock=stock,image=image)
         product.save()
         return redirect(product.show_url)
 
@@ -77,7 +72,10 @@ def product_create(request):
 
 
 def product_edit(request, product_id):
-    product = Product.objects.get(id=product_id)
+    # product = Product.objects.get(id=product_id)
+    # product = get_object_or_404(Product,id=product_id)
+    product = Product.get_product(product_id)
+
     if request.method == "POST":
         product.name = request.POST['name']
         product.description = request.POST['description']

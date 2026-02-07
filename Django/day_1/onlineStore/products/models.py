@@ -34,4 +34,9 @@ class Product(models.Model):
     def delete_product_by_id(cls, product_id):
         product = get_object_or_404(cls, id=product_id)
         product.delete()
+
+    @classmethod
+    def get_product(cls, product_id):
+        return get_object_or_404(cls, id=product_id)
+
         
