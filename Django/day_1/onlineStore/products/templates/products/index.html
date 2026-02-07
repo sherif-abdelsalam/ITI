@@ -14,7 +14,7 @@
         <!-- Product Image -->
         <div class="product-image">
             {% if product.image %}
-                <img src="{% static product.image %}" alt="{{ product.name }}">
+                <img src="{% static 'products/images/'|add:product.image %}" alt="{{ product.name }}">
             {% else %}
                 <span>📦 No Image Available</span>
             {% endif %}
@@ -42,7 +42,7 @@
 
             <!-- View Details Button -->
             <div class="product-actions">
-                <a href="/products/{{ product.id }}/" class="btn btn-primary">
+                <a href="{% url 'products.product_detail' product.id %}" class="btn btn-primary">
                     View Details
                 </a>
             </div>

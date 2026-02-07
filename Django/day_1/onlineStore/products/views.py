@@ -6,35 +6,35 @@ products = [
     {
         "id": 1,
         "name": "Apple iPhone 15",
-        "image": "assets/online-store.jpg",
+        "image": "online-store.jpg",
         "price": 999.99,
         "stock": 10
     },
     {
         "id": 2,
         "name": "Samsung Galaxy S23",
-        "image": "assets/online-store.jpg",
+        "image": "online-store.jpg",
         "price": 899.99,
         "stock": 15
     },
     {
         "id": 3,
         "name": "Sony WH-1000XM5 Headphones",
-        "image": "assets/online-store.jpg",
+        "image": "online-store.jpg",
         "price": 349.99,
         "stock": 20
     },
     {
         "id": 4,
         "name": "Dell XPS 13 Laptop",
-        "image": "assets/online-store.jpg",
+        "image": "online-store.jpg",
         "price": 1299.99,
         "stock": 5
     },
     {
         "id": 5,
         "name": "Apple Watch Series 9",
-        "image": "assets/online-store.jpg",
+        "image": "online-store.jpg",
         "price": 399.99,
         "stock": 12
     }
