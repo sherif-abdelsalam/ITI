@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 
+from products.forms import ProductModelForm
 from products.models import Product
 # Create your views here.
 # products = [
@@ -86,3 +87,17 @@ def product_edit(request, product_id):
         return redirect(product.show_url)
 
     return render(request, 'products/product_create.html', {'product': product})
+
+
+def create_via_model_form(request):
+    form = ProductModelForm()
+    if request.method == "POST":
+        form = ProductModelForm(request.POST, request.FILES)
+        print(request.FILES)
+        if form.is_valid():
+            product = form.save(commit=True)
+            return redirect(product.show_url)
+
+    return render(request, 'products/product_create_with_model_form.html',
+                  context={'form': form})
+

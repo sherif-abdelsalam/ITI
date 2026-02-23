@@ -1,0 +1,65 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+	<div class="form-card">
+		<h1 class="form-title">Create Category</h1>
+		<p class="form-subtitle">Add a new category to organize your products.</p>
+
+		<form method="post" enctype="multipart/form-data">
+			{% csrf_token %}
+
+			{% if form.non_field_errors %}
+				<ul class="errorlist">
+					{% for err in form.non_field_errors %}
+						<li>{{ err }}</li>
+					{% endfor %}
+				</ul>
+			{% endif %}
+
+			<div class="form-stack">
+				<div>
+					<label for="id_name">{{ form.name.label }}</label>
+					{{ form.name }}
+					{% if form.name.errors %}
+						<ul class="errorlist">
+							{% for err in form.name.errors %}
+								<li>{{ err }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+
+				<div>
+					<label for="id_description">{{ form.description.label }}</label>
+					{{ form.description }}
+					{% if form.description.errors %}
+						<ul class="errorlist">
+							{% for err in form.description.errors %}
+								<li>{{ err }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+
+				<div>
+					<label for="id_logo">{{ form.logo.label }}</label>
+					{{ form.logo }}
+					{% if form.logo.errors %}
+						<ul class="errorlist">
+							{% for err in form.logo.errors %}
+								<li>{{ err }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
+			</div>
+
+			<div class="form-actions">
+				<a class="ghost-btn" href="{% url 'categories.index' %}">Cancel</a>
+				<button class="btn-primary" type="submit">Save</button>
+			</div>
+		</form>
+	</div>
+{% endblock %}
+

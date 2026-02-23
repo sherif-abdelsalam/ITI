@@ -1,0 +1,62 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}{{ category.name }}{% endblock %}
+
+{% block styles %}
+<style>
+    .category-hero {
+        max-width: 980px;
+        margin: 20px auto;
+        background: rgba(15,23,42,0.6);
+        border: 1px solid rgba(148,163,184,0.12);
+        border-radius: 14px;
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 0;
+    }
+    .category-image {
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        background: #0f172a;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    .category-image img{ width:100%; height:100%; object-fit:cover; }
+    .category-body { padding: 28px; display:flex; flex-direction:column; gap:12px; }
+    .category-name { font-size: 28px; margin:0; }
+    .category-description { color: var(--muted); margin:0; line-height:1.6; }
+    .category-actions { margin-top:auto; display:flex; gap:10px; }
+    .btn { padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600; }
+    .btn-ghost { border:1px solid rgba(148,163,184,0.18); color:var(--text); background:transparent; }
+    .btn-danger { background: #ef4444; color:#fff; border:none; }
+    @media (max-width:800px){ .category-hero{ grid-template-columns: 1fr; } .category-image{ min-height:220px } }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="category-hero">
+    <div class="category-image">
+        {% if category.logo %}
+            <img src="{{ category.logo.url }}" alt="{{ category.name }}">
+        {% else %}
+            <div style="text-align:center;color:var(--muted);font-size:48px">📂</div>
+        {% endif %}
+    </div>
+    {{products}}
+
+    <div class="category-body">
+        <h1 class="category-name">{{ category.name }}</h1>
+        <p class="category-description">{{ category.description }}</p>
+
+        <div class="category-actions">
+            <a class="btn btn-ghost" href="{% url 'categories.index' %}">Back to Categories</a>
+            <!-- <a class="btn btn-ghost" href="{{ category.edit_url }}">Edit</a>
+            <a class="btn btn-danger" href="{{ category.delete_url }}">Delete</a> -->
+        </div>
+    </div>
+</div>
+{% endblock %}

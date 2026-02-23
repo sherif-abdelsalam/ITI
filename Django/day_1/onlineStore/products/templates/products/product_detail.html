@@ -4,237 +4,237 @@
 {% block content %}
 
 <style>
-/* Breadcrumb */
-.breadcrumb {
-    margin-bottom: 30px;
-    font-size: 15px;
-    color: #7f8c8d;
-    padding: 15px 0;
-    border-bottom: 2px solid rgba(102, 126, 234, 0.1);
-}
+    /* Breadcrumb */
+    .breadcrumb {
+        margin-bottom: 30px;
+        font-size: 15px;
+        color: #7f8c8d;
+        padding: 15px 0;
+        border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+    }
 
-.breadcrumb a {
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
+    .breadcrumb a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
 
-.breadcrumb a:hover {
-    color: #764ba2;
-}
+    .breadcrumb a:hover {
+        color: #764ba2;
+    }
 
-/* Layout */
-.product-detail-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: flex-start;
-}
-
-/* Product Image */
-.product-image {
-    width: 100%;
-    max-width: 450px;
-    height: 450px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%);
-    border-radius: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
-    border: 2px solid rgba(102, 126, 234, 0.1);
-    position: relative;
-}
-
-.product-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s ease;
-}
-
-.product-image:hover img {
-    transform: scale(1.05);
-}
-
-/* Product Title */
-.product-title {
-    font-size: 36px;
-    font-weight: 700;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    line-height: 1.3;
-}
-
-/* Price */
-.product-price {
-    font-size: 36px;
-    font-weight: 700;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin: 20px 0 25px;
-    display: inline-block;
-}
-
-/* Stock Badge */
-.stock-badge {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 30px;
-}
-
-.stock-available {
-    background: #d5f4e6;
-    color: #27ae60;
-}
-
-.stock-low {
-    background: #ffeaa7;
-    color: #f39c12;
-}
-
-.stock-out {
-    background: #fadbd8;
-    color: #e74c3c;
-}
-
-/* Back link */
-.back-link {
-    display: inline-block;
-    margin: 25px 0 35px;
-    color: #667eea;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 15px;
-    transition: all 0.3s ease;
-}
-
-.back-link:hover {
-    color: #764ba2;
-    margin-left: 5px;
-}
-
-/* Description Box */
-.product-description {
-    margin-top: 30px;
-    padding: 30px;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-    border-radius: 16px;
-    border: 2px solid rgba(102, 126, 234, 0.1);
-    transition: all 0.3s ease;
-}
-
-.product-description:hover {
-    border-color: #667eea;
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
-}
-
-.description-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #2c3e50;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.description-text {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.8;
-}
-
-/* Product Details Section */
-.product-details-section {
-    margin-top: 40px;
-    padding-top: 40px;
-    border-top: 2px solid rgba(102, 126, 234, 0.1);
-}
-
-.details-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.detail-item {
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 12px;
-    border-left: 4px solid #667eea;
-}
-
-.detail-label {
-    font-size: 13px;
-    font-weight: 600;
-    color: #7f8c8d;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-}
-
-.detail-value {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2c3e50;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+    /* Layout */
     .product-detail-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: flex-start;
     }
 
+    /* Product Image */
     .product-image {
-        height: 350px;
-        max-width: 100%;
+        width: 100%;
+        max-width: 450px;
+        height: 450px;
+        background: linear-gradient(135deg, #f5f7fa 0%, #ecf0f1 100%);
+        border-radius: 16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+        border: 2px solid rgba(102, 126, 234, 0.1);
+        position: relative;
     }
 
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    .product-image:hover img {
+        transform: scale(1.05);
+    }
+
+    /* Product Title */
     .product-title {
-        font-size: 28px;
+        font-size: 36px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        line-height: 1.3;
     }
 
+    /* Price */
     .product-price {
-        font-size: 28px;
+        font-size: 36px;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin: 20px 0 25px;
+        display: inline-block;
+    }
+
+    /* Stock Badge */
+    .stock-badge {
+        display: inline-block;
+        padding: 8px 16px;
+        border-radius: 25px;
+        font-size: 14px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    .stock-available {
+        background: #d5f4e6;
+        color: #27ae60;
+    }
+
+    .stock-low {
+        background: #ffeaa7;
+        color: #f39c12;
+    }
+
+    .stock-out {
+        background: #fadbd8;
+        color: #e74c3c;
+    }
+
+    /* Back link */
+    .back-link {
+        display: inline-block;
+        margin: 25px 0 35px;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        transition: all 0.3s ease;
+    }
+
+    .back-link:hover {
+        color: #764ba2;
+        margin-left: 5px;
+    }
+
+    /* Description Box */
+    .product-description {
+        margin-top: 30px;
+        padding: 30px;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        border-radius: 16px;
+        border: 2px solid rgba(102, 126, 234, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .product-description:hover {
+        border-color: #667eea;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.1);
+    }
+
+    .description-title {
+        font-size: 20px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .description-text {
+        font-size: 16px;
+        color: #555;
+        line-height: 1.8;
+    }
+
+    /* Product Details Section */
+    .product-details-section {
+        margin-top: 40px;
+        padding-top: 40px;
+        border-top: 2px solid rgba(102, 126, 234, 0.1);
     }
 
     .details-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .product-title {
-        font-size: 24px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin-top: 20px;
     }
 
-    .product-price {
-        font-size: 22px;
+    .detail-item {
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
     }
 
-    .product-image {
-        height: 280px;
-    }
-
-    .breadcrumb {
+    .detail-label {
         font-size: 13px;
+        font-weight: 600;
+        color: #7f8c8d;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 8px;
     }
-}
+
+    .detail-value {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2c3e50;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .product-detail-content {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .product-image {
+            height: 350px;
+            max-width: 100%;
+        }
+
+        .product-title {
+            font-size: 28px;
+        }
+
+        .product-price {
+            font-size: 28px;
+        }
+
+        .details-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .product-title {
+            font-size: 24px;
+        }
+
+        .product-price {
+            font-size: 22px;
+        }
+
+        .product-image {
+            height: 280px;
+        }
+
+        .breadcrumb {
+            font-size: 13px;
+        }
+    }
 </style>
 
 <div class="breadcrumb">
-    <a href="/">Home</a> → 
-    <a href="/products/">Products</a> → 
+    <a href="/">Home</a> →
+    <a href="/products/">Products</a> →
     <strong>{{ product.name }}</strong>
 </div>
 
@@ -247,9 +247,8 @@
         <div>
             <div class="product-image">
                 {% if product.image %}
-                    <img src="{% static 'products/images/'|add:product.image %}" alt="{{ product.name }}">
-                {% else %}
-                    <span style="font-size: 148px;">📦</span>
+                <img src="{{ product.image_url }}" alt="{{ product.name }}"> {% else %}
+                <span style="font-size: 148px;">📦</span>
                 {% endif %}
             </div>
         </div>
@@ -265,11 +264,11 @@
 
             <div>
                 {% if product.stock > 10 %}
-                    <span class="stock-badge stock-available">✓ In Stock ({{ product.stock }} Available)</span>
+                <span class="stock-badge stock-available">✓ In Stock ({{ product.stock }} Available)</span>
                 {% elif product.stock > 0 %}
-                    <span class="stock-badge stock-low">⚠ Low Stock ({{ product.stock }} Left)</span>
+                <span class="stock-badge stock-low">⚠ Low Stock ({{ product.stock }} Left)</span>
                 {% else %}
-                    <span class="stock-badge stock-out">✗ Out of Stock</span>
+                <span class="stock-badge stock-out">✗ Out of Stock</span>
                 {% endif %}
             </div>
 
@@ -279,16 +278,18 @@
                 <h3 class="description-title">📝 Description</h3>
                 <p class="description-text">
                     {% if product.description %}
-                        {{ product.description }}
+                    {{ product.description }}
                     {% else %}
-                        Premium quality {{ product.name }} designed for performance and reliability. Crafted with attention to detail and built to last.
+                    Premium quality {{ product.name }} designed for performance and reliability. Crafted with attention
+                    to detail and built to last.
                     {% endif %}
                 </p>
             </div>
 
             <!-- Product Details Section -->
             <div class="product-details-section">
-                <h3 style="font-size: 20px; font-weight: 600; color: #2c3e50; margin-bottom: 20px;">📊 Product Details</h3>
+                <h3 style="font-size: 20px; font-weight: 600; color: #2c3e50; margin-bottom: 20px;">📊 Product Details
+                </h3>
                 <div class="details-grid">
                     <div class="detail-item">
                         <div class="detail-label">Product ID</div>
@@ -306,9 +307,9 @@
                         <div class="detail-label">Status</div>
                         <div class="detail-value">
                             {% if product.stock > 0 %}
-                                <span style="color: #27ae60;">● Available</span>
+                            <span style="color: #27ae60;">● Available</span>
                             {% else %}
-                                <span style="color: #e74c3c;">● Out of Stock</span>
+                            <span style="color: #e74c3c;">● Out of Stock</span>
                             {% endif %}
                         </div>
                     </div>

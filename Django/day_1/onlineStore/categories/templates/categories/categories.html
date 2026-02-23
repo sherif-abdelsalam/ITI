@@ -1,0 +1,451 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}Categories{% endblock %}
+
+{% block styles %}
+    <style>
+:root {
+    --card-bg: rgba(255, 255, 255, 0.06);
+    --glass: rgba(255, 255, 255, 0.04);
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 20px 50px rgba(2, 6, 23, 0.55);
+    --primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --primary-hover: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    --accent: #8b5cf6;
+    --text: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.65);
+}
+
+/* Layout */
+.page-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 24px;
+}
+
+/* Header Section */
+.categories-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: 48px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+}
+
+.titles {
+    flex: 1;
+}
+
+.categories-title {
+    font-size: 42px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.categories-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.search-input {
+    padding: 13px 20px;
+    padding-left: 44px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    outline: none;
+    min-width: 280px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.5)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'%3E%3C/circle%3E%3Cpath d='m21 21-4.35-4.35'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 14px center;
+}
+
+.search-input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.search-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.add-category-btn {
+    padding: 13px 28px;
+    border-radius: 12px;
+    background: var(--primary);
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-category-btn::before {
+    content: '+';
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.add-category-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(139, 92, 246, 0.5);
+    background: var(--primary-hover);
+}
+
+.add-category-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Grid */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 32px;
+}
+
+/* Card */
+.category-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.category-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.3), rgba(99, 102, 241, 0.1));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.category-card:hover::before {
+    opacity: 1;
+}
+
+.category-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 24px 60px rgba(139, 92, 246, 0.25);
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+/* Media */
+.category-media {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    text-decoration: none;
+}
+
+.category-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.category-card:hover img {
+    transform: scale(1.15) rotate(2deg);
+}
+
+.media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(2, 6, 23, 0.3) 50%,
+        rgba(2, 6, 23, 0.85) 100%
+    );
+    display: flex;
+    align-items: flex-end;
+    padding: 20px;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.category-card:hover .media-overlay {
+    opacity: 1;
+}
+
+.category-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Body */
+.category-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.category-name {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+    color: var(--text);
+    margin: 0;
+}
+
+.category-description {
+    font-size: 14.5px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+.category-actions {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* Empty State */
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 80px 40px;
+    text-align: center;
+    border-radius: 24px;
+    background: var(--glass);
+    border: 2px dashed var(--border);
+    transition: all 0.3s ease;
+}
+
+.empty-state:hover {
+    border-color: rgba(139, 92, 246, 0.3);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.empty-state-icon {
+    font-size: 72px;
+    margin-bottom: 20px;
+    opacity: 0.8;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.empty-state h3 {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: var(--text);
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Loading Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-container {
+        padding: 32px 16px;
+    }
+
+    .categories-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+        margin-bottom: 32px;
+    }
+
+    .categories-title {
+        font-size: 32px;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .search-input {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .add-category-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .categories-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .categories-title {
+        font-size: 28px;
+    }
+
+    .category-media {
+        height: 180px;
+    }
+
+    .empty-state {
+        padding: 60px 24px;
+    }
+
+    .empty-state-icon {
+        font-size: 56px;
+    }
+}
+
+/* Dark mode enhancements */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --card-bg: rgba(255, 255, 255, 0.04);
+        --glass: rgba(255, 255, 255, 0.02);
+        --border: rgba(255, 255, 255, 0.06);
+    }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Accessibility improvements */
+.category-card:focus-within {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
+.add-category-btn:focus-visible,
+.search-input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="page-container">
+        <div class="categories-header">
+            <div class="titles">
+                <h1 class="categories-title">Categories</h1>
+                <p class="categories-subtitle">Explore all available product categories</p>
+            </div>
+            <div class="controls">
+                <a href="{% url 'categories.create' %}" class="add-category-btn">Add Category</a>
+            </div>
+        </div>
+
+        {% if categories %}
+            <div class="categories-grid">
+                {% for category in categories %}
+                    <article class="category-card">
+                        <a href="{% url 'categories.show' category.id %}" class="category-media">
+                            {% if category.logo %}
+                                <img src="{{ category.logo.url }}" alt="{{ category.name }}">
+                            {% else %}
+                                <img src="{% static 'products/images/placeholder.png' %}" alt="{{ category.name }}">
+                            {% endif %}
+                            <div class="media-overlay">
+                                <span class="category-badge">{{ category.name }}</span>
+                            </div>
+                        </a>
+                        <div class="category-body">
+                            <h3 class="category-name">{{ category.name }}</h3>
+                            <p class="category-description">{{ category.description }}</p>
+                            <div class="category-actions">
+                                <!-- Uncomment to enable edit/delete functionality -->
+                                <!-- <a class="btn btn-ghost" href="{{ category.edit_url }}">Edit</a> -->
+                                <!-- <a class="btn btn-danger" href="{{ category.delete_url }}">Delete</a> -->
+                            </div>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="categories-grid">
+                <div class="empty-state">
+                    <div class="empty-state-icon">📂</div>
+                    <h3>No Categories Available</h3>
+                    <p>There are no categories yet. Create one to get started!</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
