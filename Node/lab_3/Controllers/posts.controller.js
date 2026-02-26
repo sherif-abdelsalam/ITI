@@ -40,7 +40,6 @@ export const createPost = async (req, res) => {
         let newPost = {
             title: req.body.title,
             content: req.body.content,
-            createdAt: Date.now()
         };
 
         if (!validatePost(newPost)) {
@@ -76,8 +75,6 @@ export const updatePost = async (req, res) => {
                 message: "Invalid Post Data"
             });
         }
-
-        updatePost.updatedAt = Date.now();
 
         updatedPost = await postModel.findByIdAndUpdate( req.params.id, updatedPost,
             {returnDocument: "after"}
