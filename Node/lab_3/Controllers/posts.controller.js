@@ -1,5 +1,5 @@
 import postModel from "../Models/Post.model.js";
-import { validatePost } from "../Utils/post_validaion.js";
+import { validatePost } from "../Utils/validation.js";
 
 export const getAllPosts = async (req, res) => {
     try {

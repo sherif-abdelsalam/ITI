@@ -4,7 +4,7 @@ import express from "express"
 
 import { db_connect } from "./Database/dbConnect.js";
 import postsRouter from "./Routes/Post.router.js";
-import commentsRouter from "./Routes/Comment.router.js";
+// import commentsRouter from "./Routes/Comment.router.js";
 import authRouter from "./Routes/Auth.router.js";
 
 
@@ -13,7 +13,7 @@ app.use(express.json());
 await db_connect(); 
 
 app.use("/posts", postsRouter);
-app.use("/comments", commentsRouter);
+// app.use("/comments", commentsRouter);
 app.use("/", authRouter);
 
 

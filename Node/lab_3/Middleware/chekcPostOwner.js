@@ -10,14 +10,12 @@ export const checkPostOwner = async (req, res, next) => {
             return res.status(404).json({
                 message: "Post Not Found"
             });
-
         }
 
         if (post.owner.toString() !== req.decodedUser._id) {
             return res.status(403).json({
                 message: "You Don't Have Permission To update/delete This Post"
             });
-
         }
 
         req.post = post;
